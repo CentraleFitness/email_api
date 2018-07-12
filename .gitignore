@@ -328,3 +328,6 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/django
+/emailproj/db.sqlite3
+/emailproj/emailproj.pyproj
