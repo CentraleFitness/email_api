@@ -333,3 +333,6 @@ ASALocalRun/
 /emailproj/emailproj.pyproj
 /emailproj/emailproj.sln
 /emailproj/venv
+.mypy_cache/
+.vscode/settings.json
+.vscode/launch.json
