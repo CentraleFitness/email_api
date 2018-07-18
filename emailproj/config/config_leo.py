@@ -1,3 +1,6 @@
+# NSFP = Not Safe For Production
+debug = True
+
 database = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -8,3 +11,4 @@ database = {
         'PORT': 5432
     }
 }
+

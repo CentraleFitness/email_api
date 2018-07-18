@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f*$162r_df9y1uhip#@=#a*1+0v_c@i=@!zln3$s*mu7p&c2(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = settings.debug
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'emailapp',
     'rest_framework',
     'rest_framework_swagger',
 ]
