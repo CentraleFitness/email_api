@@ -9,5 +9,11 @@ swagger_view = get_swagger_view(title='Email API')
 
 urlpatterns = [
     url(r'^docs/$', swagger_view, name='docs'),
-    url(r'^proximity/$', views.ProximityAlert.as_view()),
+    url(r'^proximity/$', views.ProximityAlertAPI.as_view()),
+    url(r'^newsletter/recipient/$',
+        views.NewsletterRecipientAPI.as_view()),
+    url(r'^newsletter/recipient/list/$',
+        views.NewsletterRecipientListAPI.as_view()),
+    url(r'^newsletter/recipient/(?P<pk>\d+)/unsubscribe/$',
+        views.NewsletterUnsubscribeAPI.as_view())
 ]
