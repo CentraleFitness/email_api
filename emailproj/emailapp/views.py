@@ -8,6 +8,7 @@ from rest_framework import generics, mixins
 from emailapp.models import Proximity, NewsletterRecipient
 from emailapp.serializers import ProximitySerializer
 from emailapp.serializers import NewsletterRecipientSerializer
+from emailapp.filters import RecipientOptFilterBackend
 
 class ProximityAlertAPI(mixins.CreateModelMixin,
                         mixins.ListModelMixin,
@@ -38,6 +39,7 @@ class NewsletterRecipientAPI(mixins.CreateModelMixin,
 class NewsletterRecipientListAPI(mixins.ListModelMixin,
                                  generics.GenericAPIView):
     queryset = NewsletterRecipient.objects.all()
+    filter_backends = [RecipientOptFilterBackend]
     serializer_class = NewsletterRecipientSerializer
 
     def get(self, request, *args, **kwargs):

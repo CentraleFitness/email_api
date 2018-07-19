@@ -16,4 +16,4 @@ class Address(models.Model):
 class NewsletterRecipient(models.Model):
     email = models.EmailField(blank=None, db_index=True)
     subs_at = models.DateField(auto_now_add=True)
-    opt_out = models.BooleanField(default=False)
+    opt_out = models.BooleanField(default=False, db_index=True)
