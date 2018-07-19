@@ -5,11 +5,16 @@ from django.contrib.auth.models import User
 
 from rest_framework import generics, mixins
 
+from emailapp.models import Proximity
+from emailapp.serializers import ProximitySerializer
 
 class ProximityAlert(mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
                      mixins.DestroyModelMixin,
                      generics.GenericAPIView):
+    queryset = Proximity.objects.all()
+    serializer_class = ProximitySerializer
+
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 

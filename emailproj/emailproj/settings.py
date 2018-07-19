@@ -125,9 +125,12 @@ REST_FRAMEWORK = {
         'rest_framework_swagger.renderers.OpenAPIRenderer',
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ),    
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    )
 }
 
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False
+    'USE_SESSION_AUTH': True
 }
