@@ -19,3 +19,4 @@ setuptools==39.0.1
 simplejson==3.16.0
 uritemplate==3.0.0
 urllib3==1.23
+psycopg2==2.7.5
