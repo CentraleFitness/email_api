@@ -8,7 +8,9 @@ from rest_framework import generics, mixins
 from emailapp.models import Proximity, NewsletterRecipient
 from emailapp.serializers import ProximitySerializer
 from emailapp.serializers import NewsletterRecipientSerializer
+from emailapp.serializers import NewsletterRecipientOptOutSerializer
 from emailapp.filters import RecipientOptFilterBackend
+
 
 class ProximityAlertAPI(mixins.CreateModelMixin,
                         mixins.ListModelMixin,
@@ -48,7 +50,22 @@ class NewsletterRecipientListAPI(mixins.ListModelMixin,
 
 class NewsletterUnsubscribeAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
     queryset = NewsletterRecipient.objects.all()
-    serializer_class = NewsletterRecipientSerializer
+    serializer_class = NewsletterRecipientOptOutSerializer
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data={'opt_out': True}, partial=True)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
+    def patch(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+
+class NewsletterManageAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
+    queryset = NewsletterRecipient.objects.all()
+    serializer_class = NewsletterRecipientOptOutSerializer
 
     def patch(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)

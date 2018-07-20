@@ -10,3 +10,8 @@ class NewsletterRecipientSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsletterRecipient
         fields = ('email', )
+
+class NewsletterRecipientOptOutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsletterRecipient
+        fields = ('email', 'opt_out')

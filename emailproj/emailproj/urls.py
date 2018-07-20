@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'^newsletter/recipient/list/$',
         views.NewsletterRecipientListAPI.as_view()),
     url(r'^newsletter/recipient/(?P<pk>\d+)/unsubscribe/$',
-        views.NewsletterUnsubscribeAPI.as_view())
+        views.NewsletterUnsubscribeAPI.as_view()),
+    url(r'^newsletter/recipient/(?P<pk>\d+)/manage/$',
+        views.NewsletterManageAPI.as_view()),
 ]
