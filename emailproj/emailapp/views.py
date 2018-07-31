@@ -1,3 +1,6 @@
+from django.view import View
+from django.shortcuts import render
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
@@ -69,3 +72,8 @@ class NewsletterManageAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
 
     def patch(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
+
+class ManageView(View):
+    def get(self, request):
+        # magic happens here
+        return render(request, 'emailapp/manage.html')
