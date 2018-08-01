@@ -48,13 +48,15 @@ class NewsletterRecipientListAPI(mixins.ListModelMixin,
         return self.list(request, *args, **kwargs)
 
 
-class NewsletterUnsubscribeAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
+class NewsletterUnsubscribeAPI(mixins.UpdateModelMixin,
+                               generics.GenericAPIView):
     queryset = NewsletterRecipient.objects.all()
     serializer_class = NewsletterRecipientOptOutSerializer
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.get_serializer(instance, data={'opt_out': True}, partial=True)
+        serializer = self.get_serializer(
+            instance, data={'opt_out': True}, partial=True)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
         return Response(serializer.data)
