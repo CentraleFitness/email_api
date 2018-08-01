@@ -1,4 +1,4 @@
-from django.view import View
+from django.views import View
 from django.shortcuts import render
 
 from rest_framework.views import APIView
@@ -75,7 +75,8 @@ class NewsletterManageAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
     def patch(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
 
+
 class ManageView(View):
-    def get(self, request):
+    def get(self, request, pk):
         # magic happens here
         return render(request, 'emailapp/manage.html')
