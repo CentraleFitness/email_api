@@ -1,9 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Subscription management</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/switch.css' %}">
     </head>
     <body>
-        <p>It works!</p>
+        <div>
+            <h1>Manage your subscription preference</h1>
+        </div>
+        <div>
+            Diffusion générale
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label> 
+        </div>
+        <div>
+            Offres et Promotions
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label> 
+        </div>
+        <div>
+            Nouveau à proximité
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label> 
+        </div>
+    
     </body>
 </html>
