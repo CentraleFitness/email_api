@@ -1,5 +1,6 @@
 from django.views import View
 from django.shortcuts import render
+from django.http import HttpResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,6 +14,7 @@ from emailapp.serializers import ProximitySerializer
 from emailapp.serializers import NewsletterRecipientSerializer
 from emailapp.serializers import NewsletterRecipientOptOutSerializer
 from emailapp.filters import RecipientOptFilterBackend
+from emailapp.form import OptForm
 
 
 class ProximityAlertAPI(mixins.CreateModelMixin,
@@ -79,4 +81,15 @@ class NewsletterManageAPI(mixins.UpdateModelMixin, generics.GenericAPIView):
 class ManageView(View):
     def get(self, request, pk):
         # magic happens here
-        return render(request, 'emailapp/manage.html')
+        return render(request, 'emailapp/manage.html', {
+            'form': OptForm,
+            'hash': 1,
+            'opt_general': True,
+            'opt_sales': False,
+            'opt_new': False
+        })
+
+    def post(self, request, pk, *args, **kwargs):
+        print(args)
+        print(kwargs)
+        return HttpResponse("Toto")

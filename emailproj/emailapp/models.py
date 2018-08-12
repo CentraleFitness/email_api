@@ -16,4 +16,11 @@ class Address(models.Model):
 class NewsletterRecipient(models.Model):
     email = models.EmailField(blank=None, db_index=True)
     subs_at = models.DateField(auto_now_add=True)
+    id_email = models.CharField(max_length=32, blank=False)
     opt_out = models.BooleanField(default=False, db_index=True)
+
+class NewsletterCategoryOpt(models.Model):
+    id_email = models.CharField(max_length=32, blank=False)
+    opt_general = models.BooleanField(default=False)
+    opt_sales = models.BooleanField(default=False)
+    opt_new = models.BooleanField(default=False)
