@@ -1,10 +1,21 @@
 from django.db import models
 
-# Create your models here.
+from emailapp.utils import generate_token, TOKEN_LENGTH
+
+
+ID_INCREMENT_BEGIN = 21428
+
+
+def id_increment() -> int:
+    last_id = NewsletterRecipient.objects.all().order_by('id').last()
+    new_id = (last_id + 3 if last_id else ID_INCREMENT_BEGIN)
+    return new_id
+
 
 class Proximity(models.Model):
     email = models.EmailField(blank=None)
     city = models.CharField(max_length=100, db_index=True)
+
 
 class Address(models.Model):
     city = models.CharField(max_length=64)
@@ -13,14 +24,16 @@ class Address(models.Model):
     zip_code = models.CharField(max_length=16, blank=False)
     country = models.CharField(max_length=32, blank=False)
 
+
 class NewsletterRecipient(models.Model):
-    email = models.EmailField(blank=None, db_index=True)
-    subs_at = models.DateField(auto_now_add=True)
-    id_email = models.CharField(max_length=32, blank=False)
-    opt_out = models.BooleanField(default=False, db_index=True)
+    email = models.EmailField(blank=None)
+    id_email = models.IntegerField(
+        default=id_increment, editable=False, db_index=True)
+    token = models.CharField(default=generate_token, max_length=TOKEN_LENGTH)
+
 
 class NewsletterCategoryOpt(models.Model):
-    id_email = models.CharField(max_length=32, blank=False)
+    recipient = models.ForeignKey(NewsletterRecipient, on_delete=models.CASCADE)
     opt_general = models.BooleanField(default=False)
     opt_sales = models.BooleanField(default=False)
     opt_new = models.BooleanField(default=False)
