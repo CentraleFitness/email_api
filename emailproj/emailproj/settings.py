@@ -118,12 +118,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 STATICFILES_DIRS = [
     os.path.join(SITE_ROOT, 'static/'),
 ]
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 REST_FRAMEWORK = {

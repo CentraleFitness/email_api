@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(to left bottom, #ff5889, #ffbd68) no-repeat;
+}
+
+.row-marged {
+    margin: 1em 0;
+}
+
+.container-main {
+    margin-top: 5%;
+}
+
+.panel-strong {
+    background-color: #ffffff;
+    padding: 1em;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+}
