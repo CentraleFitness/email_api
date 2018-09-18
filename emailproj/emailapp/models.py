@@ -27,8 +27,7 @@ class Address(models.Model):
 
 class NewsletterRecipient(models.Model):
     email = models.EmailField(blank=None)
-    id_email = models.IntegerField(
-        default=id_increment, editable=False, db_index=True)
+    id_email = models.IntegerField(default=id_increment, editable=False, db_index=True)
     token = models.CharField(default=generate_token, max_length=TOKEN_LENGTH)
 
 

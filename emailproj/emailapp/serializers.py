@@ -14,4 +14,4 @@ class NewsletterRecipientSerializer(serializers.ModelSerializer):
 class NewsletterRecipientOptOutSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsletterRecipient
-        fields = ('email', 'opt_out')
+        fields = ('email', )
