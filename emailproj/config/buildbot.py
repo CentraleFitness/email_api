@@ -1,4 +1,4 @@
-debug = False
+debug = True
 
 database = {
     'default': {
