@@ -337,4 +337,7 @@ ASALocalRun/
 .vscode/settings.json
 .vscode/launch.json
 /emailproj/config/config.py
-/venv
+/venv./emailapp/__pycache__
+./emailapp/migrations/__pycache__
+./emailproj/__pycache__
+./config/__pycache__
